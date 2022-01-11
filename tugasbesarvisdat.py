@@ -22,7 +22,7 @@ Fluktuasi Harga Saham
 
 import pandas as pd
 import numpy as np
-from google.colab import drive
+# from google.colab import drive
 from bokeh.io import output_file, output_notebook
 from bokeh.plotting import figure, show
 from bokeh.models import ColumnDataSource, HoverTool
@@ -30,6 +30,7 @@ from bokeh.layouts import row, column, gridplot
 from bokeh.models.widgets import Tabs, Panel
 from bokeh.core.validation import silence
 from bokeh.core.validation.warnings import EMPTY_LAYOUT, MISSING_RENDERERS
+from bokeh.io import curdoc
 
 """Data set yang digunakan pada tugas besar 2 ini adalah data time series dari beberapa parameter saham yang terdiri dari:
 
@@ -51,7 +52,7 @@ from bokeh.core.validation.warnings import EMPTY_LAYOUT, MISSING_RENDERERS
 """
 
 # Read File
-!gdown --id 1tB88ycYizcUOjH6XJW4BO6WAD8icTPsl
+# !gdown --id 1tB88ycYizcUOjH6XJW4BO6WAD8icTPsl
 df_saham = pd.read_excel("DATASAHAM.xlsx")
 df_saham.head()
 
@@ -101,9 +102,9 @@ saham_BBCA = dict(
 )
 
 # Membuat object CloumDataSearch pada setiap saham
-BMRI_data = ColumnDataSource(dict_BMRI)
-BBRI_data = ColumnDataSource(dict_BBRI)
-BBCA_data = ColumnDataSource(dict_BBCA)
+BMRI_data = ColumnDataSource(saham_BMRI)
+BBRI_data = ColumnDataSource(saham_BBRI)
+BBCA_data = ColumnDataSource(saham_BBCA)
 
 # Konfigurasi saham
 nilai = figure(x_axis_type='datetime',
